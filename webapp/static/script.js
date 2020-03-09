@@ -21,7 +21,7 @@ $("#predict-button").click(function(event){
         image: base64Image
     }
     console.log(message);
-    $.post("http://192.168.43.250:5000/predict", JSON.stringify(message),function(response){
+    $.post("http://192.168.43.49:5000/predict", JSON.stringify(message),function(response){
         $("#normal-prediction").text(response.prediction.Normal.toFixed(6));
         $("#mild-prediction").text(response.prediction.Mild.toFixed(6));
         $("#moderate-prediction").text(response.prediction.Moderate.toFixed(6));
