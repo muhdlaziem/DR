@@ -10,10 +10,8 @@ $("#image-selector").change(function(){
     }
     reader.readAsDataURL($("#image-selector")[0].files[0]);
     $("#normal-prediction").text("");
-    $("#mild-prediction").text("");
     $("#moderate-prediction").text("");
     $("#severe-prediction").text("");
-    $("#proliferative-prediction").text("");
 });
 
 $("#predict-button").click(function(event){
@@ -21,36 +19,38 @@ $("#predict-button").click(function(event){
         image: base64Image
     }
     console.log(message);
-    $.post("http://127.0.0.1:5000/predict", JSON.stringify(message),function(response){
+    $.post("http://localhost:5000/predict", JSON.stringify(message),function(response){
+        console.log(response);
+
         $("#normal-prediction").text(response.prediction.Normal.toFixed(6));
-        $("#mild-prediction").text(response.prediction.Mild.toFixed(6));
         $("#moderate-prediction").text(response.prediction.Moderate.toFixed(6));
         $("#severe-prediction").text(response.prediction.Severe.toFixed(6));
-        $("#proliferative-prediction").text(response.prediction.Proliferative.toFixed(6));
-        let maxValue = Math.max(response.prediction.Normal,
-                response.prediction.Mild,
-                response.prediction.Moderate,
-                response.prediction.Severe,
-                response.prediction.Proliferative);
-        let result;
-        if(maxValue === response.prediction.Normal){
-            result = 'Normal';
+        
+        let result = 0;
+        if(response.prediction.Normal >= 0.5){
+            result +=1;
         }
-        else if(maxValue === response.prediction.Mild){
-            result = 'Mild';
+       if(response.prediction.Moderate >= 0.5){
+            result +=1;
         }
-        else if(maxValue === response.prediction.Moderate){
-            result = 'Moderate';
+        if(response.prediction.Severe >=0.5){
+            result +=1;
         }
-        else if(maxValue === response.prediction.Severe){
-            result = 'Severe'
+
+        if(result===1){
+            $("#result-prediction").text("NORMAL");
+
+        }
+        else if(result===2){
+            $("#result-prediction").text("MODERATE");
+
         }
         else{
-            result = 'Proliferative'
+            $("#result-prediction").text("SEVERE");
+
         }
-        $("#result-prediction").text(result);
-        console.log(`maxValue : ${maxValue}`);
-        console.log(response);
+        // console.log(`maxValue : ${maxValue}`);
+        console.log(result);
     })
 
 })
