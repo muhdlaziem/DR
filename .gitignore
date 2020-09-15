@@ -8,3 +8,4 @@
 *.jpg
 *.jpeg
 webapp/assets/denseNet_3_all.h5
+.vscode/
