@@ -10,11 +10,16 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import img_to_array
 from flask import request
 from flask import jsonify
-from flask import Flask
+from flask import Flask, render_template
 import cv2
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 999999999999
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 def get_model():
     global model
     model = load_model('./assets/denseNet_3_all.h5')
@@ -64,3 +69,6 @@ def predict():
     }
     print(response)
     return jsonify(response)
+
+if __name__ == "__main__":
+    app.run(debug=True)
