@@ -4,7 +4,7 @@
 /Dr.Amelia-Sample
 /env
 /.ipynb_checkpoints
-/webapp/__pycache__
+/__pycache__
 *.jpg
 *.jpeg
 # webapp/assets/denseNet_3_all.h5
