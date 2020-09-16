@@ -9,7 +9,7 @@ from flask import jsonify
 from flask import Flask, render_template
 import cv2
 
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__)
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 999999999999
 
 @app.route('/')
