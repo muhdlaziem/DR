@@ -1,0 +1,9 @@
+tensorflow
+keras
+opencv-python
+Flask
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
