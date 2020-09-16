@@ -1,7 +1,6 @@
 tensorflow
 keras
 opencv-python
-numpy
 Flask
 gunicorn
 itsdangerous
