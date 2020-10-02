@@ -1,15 +1,19 @@
 import base64
 import numpy as np
 import io
+from PIL import Image
 import keras
+from keras import backend as K
 from keras import Sequential
 from keras.models import load_model
+from keras.preprocessing.image import ImageDataGenerator
+from keras.preprocessing.image import img_to_array
 from flask import request
 from flask import jsonify
 from flask import Flask, render_template
 import cv2
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 # app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 999999999999
 
 @app.route('/')
