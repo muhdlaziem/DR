@@ -19,7 +19,7 @@ $("#predict-button").click(function(event){
         image: base64Image
     }
     console.log(message);
-    $.post("https://d-cnn-retina.herokuapp.com/predict", JSON.stringify(message),function(response){
+    $.post("http://127.0.0.1:5000/predict", JSON.stringify(message),function(response){
         console.log(response);
 
         $("#normal-prediction").text(response.prediction.Normal.toFixed(6));
