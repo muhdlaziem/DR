@@ -1,9 +1,6 @@
 import React from 'react';
 import {  Layout, Text, Button, Input, Card, Spinner, Modal } from '@ui-kitten/components';
 import {Image, View, Dimensions, StyleSheet, Alert} from 'react-native'
-import DocumentPicker from 'react-native-document-picker';
-import * as rnfs from 'react-native-fs'
-import ImagePicker from 'react-native-customized-image-picker';
 
 const LoadingIndicator = (props) => (
     <View style={[props.style, styles.indicator]}>
@@ -12,65 +9,19 @@ const LoadingIndicator = (props) => (
   );
 
 const diagnosis = ({route, navigation}) => {
-    const {action} = route.params;
+    const {image} = route.params;
     const [normal, setNormal] = React.useState(null);
     const [mod, setMod] = React.useState(null);
     const [sev, setSev] = React.useState(null);
-    const [path, setPath] = React.useState('');
-    const [image, setImage] = React.useState('');
-    const [load, setLoad] = React.useState(true);
+    const [load, setLoad] = React.useState(false);
     const  [accuracy, setAccuracy] = React.useState(0)
     const  [label, setLabel] = React.useState('')
     const  [status, setStatus] = React.useState('')
     const  [visible, setVisible] = React.useState(false)
     const [email, setEmail] =React.useState('')
     const [name, setName] =React.useState('')
-    const [cameraStat, setCameraStat] = React.useState(false)
-    const windowWidth = Dimensions.get('window').width;
+    const { width, height } = Dimensions.get('window')
     
-    const pickSingleAndCamera = () => {
-        setCameraStat(true)
-        console.log('Opening Camera')
-        ImagePicker.openCamera({
-            width: 400,
-            height: 400,
-            cropping: true
-        }).then(image => {
-            console.log(image[0].path);
-            setPath(image[0].path)
-            console.log('Closing Camera')
-
-        }).catch(e => {
-            console.log(e.code);
-            Alert.alert('Status',e)
-        });
-        // console.log('Closing Camera')
-    }
-    React.useEffect(() => {
-        if(cameraStat && path.length === 0) Alert.alert('Status','You did not capture any image !')
-        console.log(cameraStat, path.length)
-    },[cameraStat])
-    const  onPick = async () => {
-        // Pick a single file
-        try {
-            const res = await DocumentPicker.pick({
-                type: [DocumentPicker.types.images],
-            });
-            console.log(
-                res.uri
-        );
-        setPath(res.uri)
-        
-        } catch (err) {
-            if (DocumentPicker.isCancel(err)) {
-                // User cancelled the picker, exit any dialogs or menus and move on
-                Alert.alert('Status', 'You did not choose image !')
-                navigation.goBack();
-            } else {
-                throw err;
-            }
-        }
-    }
     const calcResult = () => {
         let cnt = 0;
         let acc = 0
@@ -100,12 +51,10 @@ const diagnosis = ({route, navigation}) => {
             setLabel("Severe");
         }
     }
-    const readImageAndPredict = () => {
-        rnfs.readFile(path, {encoding: 'base64'}).then((content) => {
+    const Predict = () => {
         // console.log(content)
-        setImage(content)
         const body = {
-            image: content
+            image: image
         }
         fetch("http://192.168.43.250:5000/predict", {
             method: "post",
@@ -121,23 +70,11 @@ const diagnosis = ({route, navigation}) => {
 
         })
         .catch(err => console.log("Error",err))
-        })
     }
-    
-    React.useEffect(() => {
-        
-        if(action == 'capture') pickSingleAndCamera()
-        else if(action == 'pick') onPick()
-        // action = ''
-        
-    },[])
 
     React.useEffect(()=> {
-        if(path) {
-            readImageAndPredict()
-            setLoad(false)
-        }
-    },[path])
+        Predict()
+    },[])
 
     React.useEffect(() =>{
         calcResult()
@@ -149,20 +86,6 @@ const diagnosis = ({route, navigation}) => {
         else setStatus('danger')
     },[label])
 
-    // React.useEffect(() =>{
-    //     return () => {
-    //         setImage('')
-    //         setNormal(null)
-    //         setStatus('')
-    //         setAccuracy(0)
-    //         setSev(null)
-    //         setMod(null)
-    //         setName('')
-    //         setEmail('')
-    //         setLabel('')
-    //         setPath('')
-    //     };
-    // })
     const sendEmail = () => {
         setLoad(true)
         const body = {
@@ -182,33 +105,34 @@ const diagnosis = ({route, navigation}) => {
             console.log(json)
             setLoad(false)
             Alert.alert("Status","Success !")
+            setVisible(false)
         })
         .catch(err => console.log("Error",err))
     }
 
     return(
         <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <View style={{ flexDirection:'row', height: 30, justifyContent: 'flex-start', alignItems: 'baseline'}}>
-            <Text category='h1'>RESULT:</Text>
-        </View>
-        <View style={{height: 30, margin: 2}} />
-        <Layout style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center',}}>
-            {image && normal && status ? 
-            <>
-            <Card status={status} >
-                <Image source={{uri: `data:image/png;base64,${image}`}} style={{
-                    width: parseInt(0.75*windowWidth),
-                    height: parseInt(0.75*windowWidth),
-                }}/>
-                {/* <Text>Normal Confident: {parseFloat(normal).toFixed(4)}</Text>
-                <Text>Moderate Confident: {parseFloat(mod).toFixed(4)}</Text>
-                <Text>Severe Confident: {parseFloat(sev).toFixed(4)}</Text> */}
-                <Text style={{textAlign:'center'}}>Accuracy: {accuracy.toFixed(2)} %</Text>
-                <Text style={{textAlign:'center'}}>{`Result: ${label}`}</Text>
+            <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, opacity: 0.5}}/>
 
-                
-            </Card>
-            <Button style={{margin : 30}} onPress={() => setVisible(true)}>Send Report</Button>
+
+            {normal && status ? 
+            <>
+                <Text category='h1' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>RESULT:</Text>
+
+                <Card status={status} style={{marginTop: 20}}>
+                    <Image source={{uri: `data:image/png;base64,${image}`}} style={{
+                        width: parseInt(0.75*width),
+                        height: parseInt(0.75*width),
+                    }}/>
+                    {/* <Text>Normal Confident: {parseFloat(normal).toFixed(4)}</Text>
+                    <Text>Moderate Confident: {parseFloat(mod).toFixed(4)}</Text>
+                    <Text>Severe Confident: {parseFloat(sev).toFixed(4)}</Text> */}
+                    <Text style={{textAlign:'center'}}>Accuracy: {accuracy.toFixed(2)} %</Text>
+                    <Text style={{textAlign:'center'}}>{`Result: ${label}`}</Text>
+
+                    
+                </Card>
+                <Button style={{margin : 30}} onPress={() => setVisible(true)}>Send Report</Button>
             
             </> : <Spinner status='info' size='giant'/>}
             <Modal
@@ -243,8 +167,7 @@ const diagnosis = ({route, navigation}) => {
                     </Button>
                 </Card>
             </Modal>
-            
-        </Layout>
+                
 
         </Layout>
     )

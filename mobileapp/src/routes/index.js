@@ -12,11 +12,35 @@ const Navigator = () => (
         //   options={{headerShown: false}}
         name="D-CNN Retina"
         component={home}
+        options={{
+          title: 'D-CNN Retina',
+          headerStyle: {
+            backgroundColor: '#ee4c50',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: 'center'
+
+          },
+        }}
       />
       <StackNav.Screen
         //   options={{headerShown: false}}
         name="Diagnosis"
         component={diagnosis}
+        options={{
+          title: 'Diagnosis',
+          headerStyle: {
+            backgroundColor: '#ee4c50',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            // textAlign: 'center'
+
+          },
+        }}
       />
     </StackNav.Navigator>
   </NavigationContainer>
