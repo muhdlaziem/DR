@@ -1,3 +1,5 @@
+import os
+os.environ['CUDA_VISIBLE_DEVICES']='-1'
 import base64
 import numpy as np
 import io
