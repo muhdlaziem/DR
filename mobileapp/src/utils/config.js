@@ -1,1 +1,3 @@
-export const API_URL ="http://192.168.43.250:5000"
+const API_URL ="https://ndr-hackhaton.et.r.appspot.com/"
+
+export default  API_URL

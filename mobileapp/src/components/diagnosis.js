@@ -1,6 +1,7 @@
 import React from 'react';
 import {  Layout, Text, Button, Input, Card, Spinner, Modal } from '@ui-kitten/components';
 import {Image, View, Dimensions, StyleSheet, Alert} from 'react-native'
+import API_URL from '../utils/config'
 
 const LoadingIndicator = (props) => (
     <View style={[props.style, styles.indicator]}>
@@ -56,7 +57,7 @@ const diagnosis = ({route, navigation}) => {
         const body = {
             image: image
         }
-        fetch("http://192.168.43.250:5000/predict", {
+        fetch(`${API_URL}/predict`, {
             method: "post",
             body: JSON.stringify(body),
             headers: { "Content-Type": "application/json" }
@@ -95,7 +96,7 @@ const diagnosis = ({route, navigation}) => {
             email: email
         }
         console.log(body)
-        fetch("http://192.168.43.250:5000/sendreport", {
+        fetch(`${API_URL}/sendreport`, {
             method: "post",
             body: JSON.stringify(body),
             headers: { "Content-Type": "application/json" }
