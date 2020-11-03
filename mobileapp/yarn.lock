@@ -5810,6 +5810,11 @@ react-native-screens@^2.12.0:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.12.0.tgz#579b7a6f99b3dd777ef4a447682e46f10ce9f5eb"
   integrity sha512-sJn7xrbVXYYQ1FBKp4eg3NXL7e2EpORT5xeQcXRJHCqt5ZcGduybZWE4tFbnBeaHE5YNab9owdrrDOJTBDKKFw==
 
+react-native-splash-screen@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
+  integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
+
 react-native-svg@^12.1.0:
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.1.0.tgz#acfe48c35cd5fca3d5fd767abae0560c36cfc03d"

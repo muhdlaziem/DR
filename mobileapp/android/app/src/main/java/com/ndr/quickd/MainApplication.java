@@ -1,4 +1,4 @@
-package com.mobileapp;
+package com.ndr.quickd;
 
 import android.app.Application;
 import android.content.Context;

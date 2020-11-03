@@ -21,7 +21,7 @@ const Diagnosis = () => (
         name="D-CNN Retina"
         component={home}
         options={{
-          title: 'D-CNN Retina',
+          title: 'Home',
           headerStyle: {
             backgroundColor: '#ee4c50',
           },

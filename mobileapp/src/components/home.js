@@ -45,7 +45,7 @@ const home = ({navigation}) => {
                 justifyContent: 'center',
                 alignItems: 'center'}}>
                 <Card style={{margin:40, display:'flex', flexDirection:'row', alignItems:'space-between', flexWrap:'wrap'}}> */}
-                    <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to D-CNN Retina</Text>
+                    <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to quickD</Text>
                     <Button style={styles.button} size='giant' onPress={pickSingleAndCamera} >START DIAGNOSIS</Button>
                     <Button style={styles.button} size='tiny' appearance='outline' status='info' onPress={() => {}} >Click Here to See Tutorial</Button>
                 {/* </Card>
