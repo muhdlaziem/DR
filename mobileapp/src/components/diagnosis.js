@@ -2,7 +2,7 @@ import React from 'react';
 import {  Layout, Text, Button, Input, Card, Spinner, Modal } from '@ui-kitten/components';
 import {Image, View, Dimensions, StyleSheet, Alert} from 'react-native'
 import API_URL from '../utils/config'
-
+import { Table, Row, Rows } from 'react-native-table-component';
 const LoadingIndicator = (props) => (
     <View style={[props.style, styles.indicator]}>
       <Spinner size='small'/>
@@ -11,9 +11,6 @@ const LoadingIndicator = (props) => (
 
 const diagnosis = ({route, navigation}) => {
     const {image} = route.params;
-    const [normal, setNormal] = React.useState(null);
-    const [mod, setMod] = React.useState(null);
-    const [sev, setSev] = React.useState(null);
     const [load, setLoad] = React.useState(false);
     const  [accuracy, setAccuracy] = React.useState(0)
     const  [label, setLabel] = React.useState('')
@@ -22,8 +19,15 @@ const diagnosis = ({route, navigation}) => {
     const [email, setEmail] =React.useState('')
     const [name, setName] =React.useState('')
     const { width, height } = Dimensions.get('window')
+    const  [visibleInfo, setVisibleInfo] = React.useState(false)
     
-    const calcResult = () => {
+    const tableHead = ['Level', 'Follow Up']
+    const tableData = [
+        ['Normal','TBD'],
+        ['Moderate', 'TBD'],
+        ['Severe','TBD']];
+
+    const calcResult = (normal, mod, sev) => {
         let cnt = 0;
         let acc = 0
         if(parseFloat(normal) > 0.5){ 
@@ -44,12 +48,15 @@ const diagnosis = ({route, navigation}) => {
         console.log(`Acc: ${acc/cnt*100}`)
         if(cnt==1){
             setLabel("Normal");
+            setStatus('success')
         }
         else if(cnt==2){
             setLabel("Moderate");
+            setStatus('warning')
         }
         else{
             setLabel("Severe");
+            setStatus('danger')
         }
     }
     const Predict = () => {
@@ -65,9 +72,8 @@ const diagnosis = ({route, navigation}) => {
         .then(res => res.json())
         .then(json => {
             console.log(json)
-            setNormal(json.prediction.Normal)
-            setMod(json.prediction.Moderate)
-            setSev(json.prediction.Severe)
+            
+            calcResult(json.prediction.Normal, json.prediction.Moderate, json.prediction.Severe)
 
         })
         .catch(err => console.log("Error",err))
@@ -77,15 +83,6 @@ const diagnosis = ({route, navigation}) => {
         Predict()
     },[])
 
-    React.useEffect(() =>{
-        calcResult()
-    },[sev])
-
-    React.useEffect(() =>{
-        if(label == 'Normal') setStatus('success')
-        else if(label  == 'Moderate') setStatus('warning')
-        else setStatus('danger')
-    },[label])
 
     const sendEmail = () => {
         setLoad(true)
@@ -116,7 +113,7 @@ const diagnosis = ({route, navigation}) => {
             <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, opacity: 0.5}}/>
 
 
-            {normal && status ? 
+            {status ? 
             <>
                 <Text category='h1' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>RESULT:</Text>
 
@@ -125,15 +122,18 @@ const diagnosis = ({route, navigation}) => {
                         width: parseInt(0.75*width),
                         height: parseInt(0.75*width),
                     }}/>
-                    {/* <Text>Normal Confident: {parseFloat(normal).toFixed(4)}</Text>
-                    <Text>Moderate Confident: {parseFloat(mod).toFixed(4)}</Text>
-                    <Text>Severe Confident: {parseFloat(sev).toFixed(4)}</Text> */}
+                    
                     <Text style={{textAlign:'center'}}>Accuracy: {accuracy.toFixed(2)} %</Text>
                     <Text style={{textAlign:'center'}}>{`Result: ${label}`}</Text>
 
                     
                 </Card>
-                <Button style={{margin : 30}} onPress={() => setVisible(true)}>Send Report</Button>
+                <View style={{flexDirection: 'row'}}> 
+                    <Button style={{margin : 30}} onPress={() => setVisible(true)}>Send Report</Button>
+                    <Button style={{margin : 30}} onPress={() => setVisibleInfo(true)}>Information</Button>
+                </View>
+                
+
             
             </> : <Spinner status='info' size='giant'/>}
             <Modal
@@ -141,6 +141,7 @@ const diagnosis = ({route, navigation}) => {
                 backdropStyle={styles.backdrop}
                 onBackdropPress={() => setVisible(false)}>
                 <Card disabled={true}>
+                    <Text style={{textAlign:'center', margin: 10, fontWeight:'bold'}} category='h3'>Send Report To...</Text>
                     <Input 
                         placeholder="Enter your Email"
                         // value={email}
@@ -168,6 +169,25 @@ const diagnosis = ({route, navigation}) => {
                     </Button>
                 </Card>
             </Modal>
+            <Modal
+                visible={visibleInfo}
+                backdropStyle={styles.backdrop}
+                onBackdropPress={() => setVisibleInfo(false)}>
+                <Card disabled={true}>
+                    <Text style={{textAlign:'center', margin: 10, fontWeight:'bold'}} category='h3'>Informations</Text>
+                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                        <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
+                        <Rows data={tableData} textStyle={styles.text}/>
+                    </Table>
+                    
+                    
+
+
+                    <Button onPress={() => setVisibleInfo(false)} style={styles.button,{width: '50%', alignSelf: 'center', margin:20}} size='small' appearance='outline' status='danger'>
+                        Close
+                    </Button>
+                </Card>
+            </Modal>
                 
 
         </Layout>
@@ -188,5 +208,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
       },
+    head: { height: 40, backgroundColor: '#f1f8ff' },
+    text: { margin: 6 }
   });
 export default diagnosis;
