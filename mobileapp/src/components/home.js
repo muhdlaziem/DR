@@ -40,7 +40,8 @@ const home = ({navigation}) => {
             {/* <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, resizeMode:'cover', opacity: 0.5}}/> */}
             
            
-            <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to quickD</Text>
+            <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to</Text>
+            <Text category='h1' style={{textAlign:'center', fontWeight:'bold', color:'#ee4c50'}}>quickD</Text>
             <Button style={styles.button} size='giant' onPress={pickSingleAndCamera} >START DIAGNOSIS</Button>
             <Button style={styles.button} size='tiny' appearance='outline' status='info' onPress={() => {}} >Click Here to See Tutorial</Button>
                 

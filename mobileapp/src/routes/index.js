@@ -9,8 +9,12 @@ import {
 } from '@react-navigation/drawer';
 import {View, Image, StyleSheet, Dimensions} from 'react-native'
 import {Icon, Modal, Card, Button,Text} from '@ui-kitten/components'
+
 import diagnosis from '../components/diagnosis';
 import home from '../components/home';
+import reportbug from '../components/reportbug';
+import about from '../components/about';
+
 
 const StackNav = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,6 +61,54 @@ const Diagnosis = ({navigation}) => (
       />
     </StackNav.Navigator>
 )
+
+const ReportBugNav = ({navigation}) => (
+  <StackNav.Navigator initialRouteName="Report Bugs">
+      <StackNav.Screen
+        //   options={{headerShown: false}}
+        name="Report Bugs"
+        component={reportbug}
+        options={{
+          title: 'Report Bugs',
+          headerStyle: {
+            backgroundColor: '#ee4c50',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: 'center'
+
+          },
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+        }}
+      />
+    </StackNav.Navigator>
+)
+
+const aboutNav = ({navigation}) => (
+  <StackNav.Navigator initialRouteName="Report Bugs">
+      <StackNav.Screen
+        //   options={{headerShown: false}}
+        name="About"
+        component={about}
+        options={{
+          title: 'About',
+          headerStyle: {
+            backgroundColor: '#ee4c50',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: 'center'
+
+          },
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+        }}
+      />
+    </StackNav.Navigator>
+)
 const CustomDrawerContent=(props)=> {
   const [visible,setVisible] = React.useState(false);
 
@@ -76,17 +128,8 @@ const CustomDrawerContent=(props)=> {
         label="Informations"
         onPress={() => props.navigation.closeDrawer()}
       />
-      <DrawerItem
-        label="Report Bugs"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      <DrawerItem
-        label="About"
-        onPress={() => {
-          setVisible(true)
-          props.navigation.closeDrawer()
-        }}
-      />
+      
+      
       <Modal
           visible={visible}
           backdropStyle={styles.backdrop}
@@ -111,6 +154,9 @@ const Navigator = () => (
   <NavigationContainer>
     <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />} initialRouteName='Start Diagnosis'>
       <Drawer.Screen name="Start Diagnosis" component={Diagnosis} />
+      <Drawer.Screen name="Report Bugs" component={ReportBugNav}/>
+      <Drawer.Screen name="About" component={aboutNav}/>
+
       
     </Drawer.Navigator>
   </NavigationContainer>
