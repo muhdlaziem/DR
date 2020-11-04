@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Layout, Text, Button, Input, Card, Spinner, Modal } from '@ui-kitten/components';
-import {Image, View, Dimensions, StyleSheet, Alert} from 'react-native'
+import {Image, View, Dimensions, StyleSheet, Alert, ScrollView} from 'react-native'
 import API_URL from '../utils/config'
 import { Table, Row, Rows } from 'react-native-table-component';
 const LoadingIndicator = (props) => (
@@ -23,9 +23,9 @@ const diagnosis = ({route, navigation}) => {
     
     const tableHead = ['Level', 'Follow Up']
     const tableData = [
-        ['Normal','TBD'],
-        ['Moderate', 'TBD'],
-        ['Severe','TBD']];
+        ['Normal','Regular Checkup'],
+        ['Moderate', 'Meet Doctor for further actions'],
+        ['Severe','Meet Opthalmologist for further actions']];
 
     const calcResult = (normal, mod, sev) => {
         let cnt = 0;
@@ -112,7 +112,6 @@ const diagnosis = ({route, navigation}) => {
         <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             {/* <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, opacity: 0.5}}/> */}
 
-
             {status ? 
             <>
                 <Text category='h1' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>RESULT:</Text>
@@ -132,6 +131,7 @@ const diagnosis = ({route, navigation}) => {
                     <Button style={{margin : 30}} onPress={() => setVisible(true)}>Send Report</Button>
                     <Button style={{margin : 30}} onPress={() => setVisibleInfo(true)}>Information</Button>
                 </View>
+
                 
 
             
@@ -191,6 +191,7 @@ const diagnosis = ({route, navigation}) => {
                 
 
         </Layout>
+        
     )
     
 };

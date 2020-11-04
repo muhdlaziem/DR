@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Layout, Text, Button, Input, Card, Spinner, Modal } from '@ui-kitten/components';
-import {Image, View, Dimensions, StyleSheet, Alert} from 'react-native'
+import {Image, View, Dimensions, StyleSheet, Alert, ScrollView} from 'react-native'
 import API_URL from '../utils/config'
 
 const LoadingIndicator = (props) => (
@@ -26,7 +26,7 @@ const reportbug = ({route, navigation}) => {
                 email: email
             }
             console.log(body)
-            fetch(`${API_URL}/sendreport`, {
+            fetch(`${API_URL}/sendbugs`, {
                 method: "post",
                 body: JSON.stringify(body),
                 headers: { "Content-Type": "application/json" }
@@ -37,37 +37,47 @@ const reportbug = ({route, navigation}) => {
                 setLoad(false)
                 Alert.alert("Status","Thank you for submitting Report!")
             })
-            .catch(err => console.log("Error",err))
+            .catch(err => {
+                console.log("Error",err)
+                setLoad(false)})
         }
         else {
             Alert.alert('Status', 'Plese insert All Details')
             setLoad(false)
         }
     }
-
+    
     return(
-        <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Input style={{padding:20}} label="Email:" placeholder='Insert Email' onChangeText={val => setEmail(val)}></Input>
-            <Input style={{padding:20}}label="Name:" placeholder='Insert Name' onChangeText={val => setName(val)}></Input>
-            <Input style={{padding:20}}label="Title:" placeholder='Insert Title' onChangeText={val => setTitle(val)}></Input>
-            <Input style={{padding:20}}label="Content:" textStyle={{ minHeight: 100 }}
-                placeholder='Place your Details Here' onChangeText={val => setContent(val)}></Input>         
-            {
-                load ?
-                <Button style={{margin:10}} appearance='outline' accessoryLeft={LoadingIndicator}>
-                    LOADING
-                </Button> :
-                <Button style={{margin:10}} onPress={() => {
-                    sendEmail()
-                    // setVisible(false)
-                }}>Submit Report</Button>
-            }      
+        <ScrollView style={{backgroundColor: 'white'}}>
+            <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center' , backgroundColor: 'white'}}>
+                <Input style={{paddingRight:20, paddingLeft:20, paddingTop:20}} value={email} label={evaProps => <Text {...evaProps} style={{fontWeight:'bold', margin:5}}>Email:</Text>} placeholder='Insert Email' onChangeText={val => setEmail(val)}></Input>
+                <Input style={{paddingRight:20, paddingLeft:20, paddingTop:10}} value={name} label={evaProps => <Text {...evaProps} style={{fontWeight:'bold', margin:5}}>Name:</Text>} placeholder='Insert Name' onChangeText={val => setName(val)}></Input>
+                <Input style={{paddingRight:20, paddingLeft:20, paddingTop:10}} value={title} label={evaProps => <Text {...evaProps} style={{fontWeight:'bold', margin:5}}>Title:</Text>} placeholder='Insert Title' onChangeText={val => setTitle(val)}></Input>
+                <Input style={{paddingRight:20, paddingLeft:20, paddingTop:10}} value={content} label={evaProps => <Text {...evaProps} style={{fontWeight:'bold', margin:5}}>Content:</Text>}textStyle={{ minHeight: 100 }}
+                    placeholder='Place your Details Here' onChangeText={val => setContent(val)} multiline={true} allowFontScaling={true}></Input>         
+                {
+                    load ?
+                    <Button style={{margin:10}} appearance='outline' accessoryLeft={LoadingIndicator}>
+                        LOADING
+                    </Button> :
+                    <Button style={{margin:10}} onPress={() => {
+                        sendEmail()
+                        // setVisible(false)
+                    }}>Submit Report</Button>
+                }      
 
-        </Layout>
+            </Layout>
+        </ScrollView>
+        
     )
     
 };
 const styles = StyleSheet.create({
+    
+    indicator: {
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
     
   });
 export default reportbug;

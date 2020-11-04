@@ -14,6 +14,8 @@ import diagnosis from '../components/diagnosis';
 import home from '../components/home';
 import reportbug from '../components/reportbug';
 import about from '../components/about';
+import information from '../components/information';
+
 
 
 const StackNav = createStackNavigator();
@@ -93,7 +95,31 @@ const aboutNav = ({navigation}) => (
         name="About"
         component={about}
         options={{
-          title: 'About',
+          title: 'About Us',
+          headerStyle: {
+            backgroundColor: '#ee4c50',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: 'center'
+
+          },
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+        }}
+      />
+    </StackNav.Navigator>
+)
+
+const infoNav = ({navigation}) => (
+  <StackNav.Navigator initialRouteName="Informations">
+      <StackNav.Screen
+        //   options={{headerShown: false}}
+        name="Informations"
+        component={information}
+        options={{
+          title: 'Informations',
           headerStyle: {
             backgroundColor: '#ee4c50',
           },
@@ -119,34 +145,6 @@ const CustomDrawerContent=(props)=> {
             <Text style={styles.text}>quickD by NDR</Text>
       </View>
       <DrawerItemList {...props} />
-      
-      <DrawerItem
-        label="Tutorials"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      <DrawerItem
-        label="Informations"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      
-      
-      <Modal
-          visible={visible}
-          backdropStyle={styles.backdrop}
-          onBackdropPress={() => setVisible(false)}
-          >
-          <Card disabled={true} style={{margin:50 }}>
-              <Text category='h1' style={{textAlign:'center', margin: 10, fontWeight:'bold'}} >About</Text>
-              <Image source={require('../assets/logo.png')} style={{ width: 100, height:100, margin:20, alignSelf:'center'}} />
-              <Text category='h5' style={{textAlign:'center', margin: 10, fontWeight:'bold'}}>Credits:</Text>
-              <Text style={{textAlign:'center', margin: 10}}><Text style={{textAlign:'center', fontWeight:'bold'}}>NDR Teams:</Text> Muhammad Laziem, Muhammad Amiruddin, Aishah Nabilah, Puteri Ameena</Text>
-              <Text style={{textAlign:'center', margin: 10}}><Text style={{textAlign:'center', fontWeight:'bold'}}>Mentors:</Text> Assoc. Prof. Dr. Amelia Ritahani Bt. Ismail, Dr. Nurul Ain Binti Yahaya </Text>
-
-              <Button onPress={() => setVisible(false)} style={styles.button,{width: '50%', alignSelf: 'center', margin:20}} size='small' appearance='outline' status='danger'>
-                  Close
-              </Button>
-          </Card>
-      </Modal>
     </DrawerContentScrollView>
   );
 }
@@ -154,8 +152,9 @@ const Navigator = () => (
   <NavigationContainer>
     <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />} initialRouteName='Start Diagnosis'>
       <Drawer.Screen name="Start Diagnosis" component={Diagnosis} />
+      <Drawer.Screen name="Informations" component={infoNav} />
       <Drawer.Screen name="Report Bugs" component={ReportBugNav}/>
-      <Drawer.Screen name="About" component={aboutNav}/>
+      <Drawer.Screen name="About Us" component={aboutNav}/>
 
       
     </Drawer.Navigator>

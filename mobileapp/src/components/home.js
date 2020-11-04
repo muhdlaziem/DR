@@ -7,7 +7,7 @@ import ImagePicker from 'react-native-image-picker';
 const home = ({navigation}) => {
     // const [visible, setVisible] = React.useState(false);
     const { width, height } = Dimensions.get('window')
-
+    const [visible, setVisible] = React.useState(false)
     const pickSingleAndCamera = () => {
           
           /**
@@ -41,10 +41,24 @@ const home = ({navigation}) => {
             
            
             <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to</Text>
-            <Text category='h1' style={{textAlign:'center', fontWeight:'bold', color:'#ee4c50'}}>quickD</Text>
+            <Text category='h1' style={{textAlign:'center', fontWeight:'bold', color:'#ee4c50',marginBottom:75, fontSize:70}}>quickD</Text>
             <Button style={styles.button} size='giant' onPress={pickSingleAndCamera} >START DIAGNOSIS</Button>
-            <Button style={styles.button} size='tiny' appearance='outline' status='info' onPress={() => {}} >Click Here to See Tutorial</Button>
+            <Button style={styles.button} size='tiny' appearance='outline' status='info' onPress={() =>setVisible(true)} >How this application works ?</Button>
+            <Text style={{textAlign:'center', marginTop:20}}>&reg; NDR, 2020</Text>
+            <Modal
+                visible={visible}
+                backdropStyle={styles.backdrop}
+                onBackdropPress={() => setVisible(false)}>
+                <Card disabled={true} style={{margin:40}}>
+                    <Text style={{textAlign:'center', margin: 10, fontWeight:'bold'}} category='h6'>How this application works ?</Text>
+                    <Text style={{margin:10}}>This application is predicting Diabetic Retinopathy stage based on retinal image by using Artificial Intelligence(AI).</Text>
                 
+
+                    <Button onPress={() => setVisible(false)} style={styles.button,{width: '50%', alignSelf: 'center', margin:20}} size='small' appearance='outline' status='danger'>
+                        Close
+                    </Button>
+                </Card>
+            </Modal>
         </Layout>
 
     )
