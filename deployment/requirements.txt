@@ -1,0 +1,9 @@
+tensorflow
+keras
+opencv-python-headless
+Flask
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
