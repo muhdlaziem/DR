@@ -37,21 +37,13 @@ const home = ({navigation}) => {
 
     return (
         <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }} > 
-                <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, resizeMode:'cover', opacity: 0.5}}/>
+            {/* <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, resizeMode:'cover', opacity: 0.5}}/> */}
             
-            {/* <ImageBackground source={require('../assets/doctor.png')} style={{
-                flex: 1,
-                resizeMode: "cover",
-                justifyContent: 'center',
-                alignItems: 'center'}}>
-                <Card style={{margin:40, display:'flex', flexDirection:'row', alignItems:'space-between', flexWrap:'wrap'}}> */}
-                    <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to quickD</Text>
-                    <Button style={styles.button} size='giant' onPress={pickSingleAndCamera} >START DIAGNOSIS</Button>
-                    <Button style={styles.button} size='tiny' appearance='outline' status='info' onPress={() => {}} >Click Here to See Tutorial</Button>
-                {/* </Card>
-
-            </ImageBackground>
-            <Button>a</Button> */}
+           
+            <Text category='h2' style={{textAlign:'center', fontWeight:'bold', color:'#2E3131'}}>Welcome to quickD</Text>
+            <Button style={styles.button} size='giant' onPress={pickSingleAndCamera} >START DIAGNOSIS</Button>
+            <Button style={styles.button} size='tiny' appearance='outline' status='info' onPress={() => {}} >Click Here to See Tutorial</Button>
+                
         </Layout>
 
     )

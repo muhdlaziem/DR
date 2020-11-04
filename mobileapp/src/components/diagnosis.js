@@ -110,7 +110,7 @@ const diagnosis = ({route, navigation}) => {
 
     return(
         <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, opacity: 0.5}}/>
+            {/* <Image source={require('../assets/doctor.png')} style={{position: 'absolute', top: 0, left: 0, width: width, height: height, opacity: 0.5}}/> */}
 
 
             {status ? 
