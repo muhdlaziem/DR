@@ -76,7 +76,18 @@ const diagnosis = ({route, navigation}) => {
             calcResult(json.prediction.Normal, json.prediction.Moderate, json.prediction.Severe)
 
         })
-        .catch(err => console.log("Error",err))
+        .catch(err => {
+            if(err.message === "Network request failed") {
+                Alert.alert("Status", `${err.message}, Please check your internet connection.`)
+
+            }
+            else {
+                Alert.alert("Status", `${err.message} !`)
+
+            }
+            navigation.goBack()
+            console.log("Error",err.message)
+        })
     }
 
     React.useEffect(()=> {
@@ -105,7 +116,18 @@ const diagnosis = ({route, navigation}) => {
             Alert.alert("Status","Success !")
             setVisible(false)
         })
-        .catch(err => console.log("Error",err))
+        .catch(err => {
+            if(err.message === "Network request failed") {
+                Alert.alert("Status", `${err.message}, Please check your internet connection.`)
+
+            }
+            else {
+                Alert.alert("Status", `${err.message} !`)
+            }
+            setLoad(false)
+            console.log("Error",err)
+            
+        })
     }
 
     return(
@@ -135,7 +157,12 @@ const diagnosis = ({route, navigation}) => {
                 
 
             
-            </> : <Spinner status='info' size='giant'/>}
+            </> : 
+            <>
+                <Spinner status='info' size='giant'/>
+                <Text style={{margin:10}}>Loading... Please wait.</Text>
+            </>
+            }
             <Modal
                 visible={visible}
                 backdropStyle={styles.backdrop}

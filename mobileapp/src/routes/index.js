@@ -39,8 +39,8 @@ const Diagnosis = ({navigation}) => (
             textAlign: 'center'
 
           },
-          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
-          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 30, height:30, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 30, height:30, margin:10}} />),
         }}
       />
       <StackNav.Screen
@@ -58,7 +58,7 @@ const Diagnosis = ({navigation}) => (
             textAlign: 'center'
 
           },
-          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />)
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 30, height:30, margin:10}} />)
         }}
       />
     </StackNav.Navigator>
@@ -81,8 +81,8 @@ const ReportBugNav = ({navigation}) => (
             textAlign: 'center'
 
           },
-          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
-          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 30, height:30, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 30, height:30, margin:10}} />),
         }}
       />
     </StackNav.Navigator>
@@ -105,8 +105,8 @@ const aboutNav = ({navigation}) => (
             textAlign: 'center'
 
           },
-          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
-          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 30, height:30, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 30, height:30, margin:10}} />),
         }}
       />
     </StackNav.Navigator>
@@ -129,14 +129,13 @@ const infoNav = ({navigation}) => (
             textAlign: 'center'
 
           },
-          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 40, height:40, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
-          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 40, height:40, margin:10}} />),
+          headerLeft: ()=>(<Icon name='menu-outline' style={{width: 30, height:30, margin:10}} fill='#FFF' onPress={() => {navigation.openDrawer()}}/>),
+          headerRight: ()=>(<Image source={require('../assets/logo.png')} style={{ width: 30, height:30, margin:10}} />),
         }}
       />
     </StackNav.Navigator>
 )
 const CustomDrawerContent=(props)=> {
-  const [visible,setVisible] = React.useState(false);
 
   return (
     <DrawerContentScrollView {...props}>

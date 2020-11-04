@@ -38,8 +38,16 @@ const reportbug = ({route, navigation}) => {
                 Alert.alert("Status","Thank you for submitting Report!")
             })
             .catch(err => {
-                console.log("Error",err)
-                setLoad(false)})
+                if(err.message === "Network request failed") {
+                    Alert.alert("Status", `${err.message}, Please check your internet connection.`)
+                }
+                else {
+                    Alert.alert("Status", `${err.message} !`)
+    
+                }
+                setLoad(false)
+                console.log("Error",err.message)
+            })
         }
         else {
             Alert.alert('Status', 'Plese insert All Details')
