@@ -82,7 +82,7 @@ const diagnosis = ({route, navigation}) => {
 
             }
             else {
-                Alert.alert("Status", `${err.message} !`)
+                Alert.alert("Status", "Error has occurred, Please try again later.")
 
             }
             navigation.goBack()
@@ -122,7 +122,7 @@ const diagnosis = ({route, navigation}) => {
 
             }
             else {
-                Alert.alert("Status", `${err.message} !`)
+                Alert.alert("Status", "Error has occurred, Please try again later.")
             }
             setLoad(false)
             console.log("Error",err)

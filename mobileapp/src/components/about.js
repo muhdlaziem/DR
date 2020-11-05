@@ -17,7 +17,7 @@ const about = ({route, navigation}) => {
               <Text style={{textAlign:'center', margin: 10}}><Text style={{textAlign:'center', fontWeight:'bold'}}>NDR Teams :</Text> Muhammad Laziem, Muhammad Amiruddin, Aishah Nabilah, Puteri Ameena</Text>
               <Text style={{textAlign:'center', margin: 10}}><Text style={{textAlign:'center', fontWeight:'bold'}}>Our University :</Text> International Islamic University of Malaysia</Text>
 
-              <Text style={{textAlign:'center', margin: 10}}><Text style={{textAlign:'center', fontWeight:'bold'}}>Mentors :</Text> Assoc. Prof. Dr. Amelia Ritahani Bt. Ismail, Dr. Nurul Ain Binti Yahaya </Text>
+              <Text style={{textAlign:'center', margin: 10}}><Text style={{textAlign:'center', fontWeight:'bold'}}>Mentors :</Text> Assoc. Prof. Dr. Amelia Ritahani Binti Ismail, Mrs. Nurul Ain Binti Yahaya </Text>
 
               {/* <Button onPress={() => setVisible(false)} style={styles.button,{width: '50%', alignSelf: 'center', margin:20}} size='small' appearance='outline' status='danger'>
                   Close

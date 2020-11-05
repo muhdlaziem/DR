@@ -42,7 +42,7 @@ const reportbug = ({route, navigation}) => {
                     Alert.alert("Status", `${err.message}, Please check your internet connection.`)
                 }
                 else {
-                    Alert.alert("Status", `${err.message} !`)
+                    Alert.alert("Status", "Error has occurred, Please try again later.")
     
                 }
                 setLoad(false)
