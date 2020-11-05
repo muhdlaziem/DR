@@ -27,7 +27,7 @@
 [![Stargazers][stars-shield]](https://github.com/muhdlaziem/automated-hazard-detection/stargazers)
 [![Issues][issues-shield]](https://github.com/muhdlaziem/automated-hazard-detection/issues)
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/muhdlaziem/)
 
 
 
@@ -65,7 +65,6 @@
 - [Getting Started](#getting-started)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -98,7 +97,7 @@ To use the app for diagnosis, please follow these simple steps.
 
 ### Installation
 
-Install the mobile app by downloading the apk [file](https://raw.githubusercontent.com/muhdlaziem/DR/master/apk/app-release.apk)
+Install the mobile app by downloading the apk file in [apk\app-release.apk](https://raw.githubusercontent.com/muhdlaziem/DR/master/apk/app-release.apk)
 
 
 
@@ -110,9 +109,9 @@ Install the mobile app by downloading the apk [file](https://raw.githubuserconte
 
 
 <!-- ROADMAP -->
-## Roadmap
+<!-- ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues). -->
 
 
 
@@ -120,13 +119,6 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 
 
 <!-- LICENSE -->
@@ -139,18 +131,21 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+* Muhammad Laziem - muhdlaziem@gmail.com
+* Aishah Nabilah - ainachmrj@gmail.com
+* Puteri Ameena - puteriameena.iium@gmail.com
+* Muhammad Amiruddin - m.amiruddin27@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/muhdlaziem/DR](https://github.com/muhdlaziem/DR)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* Assoc. Prof. Dr. Amelia Ritahani, Project Supervisor, Kuliyyah of Information Communication Technology IIUM Gombak Campus - amelia@iium.edu.my
+* Dr. Nurul Ain Binti Yahaya, Optometry Lecturer, Kuliyyah of Allied Health Science Kuantan IIUM Kuantan Campus - nurulainyahaya@iium.edu.my
+* Mr. Selvah Karthikesu, Mentor, Roche - selvah.karthikesu@roche.com
 
 
 
