@@ -153,15 +153,15 @@ Project Link: [https://github.com/muhdlaziem/DR](https://github.com/muhdlaziem/D
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/muhdlaziem/repo.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/muhdlaziem/DR.svg?style=flat-square
 [contributors-url]: https://github.com/muhdlaziem/DR/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/muhdlaziem/repo.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/muhdlaziem/DR.svg?style=flat-square
 [forks-url]: https://github.com/muhdlaziem/DR/network/members
-[stars-shield]: https://img.shields.io/github/stars/muhdlaziem/repo.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/muhdlaziem/DR.svg?style=flat-square
 [stars-url]: https://github.com/muhdlaziem/automated-hazard-detection/stargazers
-[issues-shield]: https://img.shields.io/github/issues/muhdlaziem/repo.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/muhdlaziem/DR.svg?style=flat-square
 [issues-url]: https://github.com/muhdlaziem/automated-hazard-detection/issues
-[license-shield]: https://img.shields.io/github/license/muhdlaziem/repo.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/muhdlaziem/DR.svg?style=flat-square
 [license-url]: https://github.com/muhdlaziem/DR/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/muhdlaziem/
