@@ -144,7 +144,7 @@ Project Link: [https://github.com/muhdlaziem/DR](https://github.com/muhdlaziem/D
 ## Acknowledgements
 
 * Assoc. Prof. Dr. Amelia Ritahani, Project Supervisor, Kuliyyah of Information Communication Technology IIUM Gombak Campus - amelia@iium.edu.my
-* Dr. Nurul Ain Binti Yahaya, Optometry Lecturer, Kuliyyah of Allied Health Science Kuantan IIUM Kuantan Campus - nurulainyahaya@iium.edu.my
+* Mrs. Nurul Ain Binti Yahaya, Optometry Lecturer, Kuliyyah of Allied Health Science Kuantan IIUM Kuantan Campus - nurulainyahaya@iium.edu.my
 * Mr. Selvah Karthikesu, Mentor, Roche - selvah.karthikesu@roche.com
 
 
