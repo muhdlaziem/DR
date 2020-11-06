@@ -1,7 +1,7 @@
 runtime: python38
 instance_class: F4_1G
 # env: standard
-entrypoint: gunicorn -b :8080 -w 4 app:app
+entrypoint: gunicorn -b :8080 -w 2 app:app
 # runtime_config:
 #   python_version: 3
 
